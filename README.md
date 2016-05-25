@@ -1,24 +1,22 @@
-Template Project
-================
+# Template Project
 
-Bijan Sondossi
---------------
+## Bijan Sondossi
 Basic project template using CMake and Git. Also learning **markdown**.
 
 ### Folder Structure
-## build 
+#### build 
 Build and run from *here*.
     cd build
     cmake ..
     make install
     
-## include
+#### include
 Header files.
 
-## resources 
+#### resources 
 Images, audio, video, etc.
 
-## source 
+#### source 
 Source code.
 
 ### Markdown Resources
