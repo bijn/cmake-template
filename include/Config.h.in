@@ -1,0 +1,25 @@
+// Bijan Sondossi
+// FILE: Config.h
+// DESCRIPTION: Configs.
+
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+#include <string>
+
+// CMake Defines
+#define VERSION_MAJOR @VERSION_MAJOR@
+#define VERSION_MINOR @VERSION_MINOR@
+#define VERSION_PATCH @VERSION_PATCH@
+
+namespace SouperFun {
+  // Returns PWD given arg[0]
+  static std::string GetPath(std::string path) {
+    std::string title = "@EXE@";
+    return path.substr(0, path.length() - title.length());
+  }
+}
+
+#endif // CONFIG H
+
+// end Config.h
