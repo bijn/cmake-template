@@ -10,7 +10,7 @@
 namespace SouperFun {
   Core::Core(std::string path) {
     m_path = path;
-    printf("%s\n", m_path.c_str());
+    printf("PATH: %s\n", m_path.c_str());
   }
 
   Core::~Core() {

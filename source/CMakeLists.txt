@@ -6,7 +6,7 @@
 add_subdirectory(SouperFun)
 
 # Add exe
-add_executable(${EXE} Main.cc)
+add_executable(${EXE} main.cc)
 
 # Link libraries
 target_link_libraries(${EXE}

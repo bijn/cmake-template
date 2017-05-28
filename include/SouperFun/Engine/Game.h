@@ -9,14 +9,18 @@
 
 #include <SouperFun/Engine/Core.h>
 
-namespace SouperFun {
-  class Game {
-   public:
+namespace SouperFun 
+{
+  class Game
+  {
+  public:
     Game(std::string path);
+    
+    void TestWindow();
 
     ~Game();
 
-   private:
+  private:
     Core *m_core;
 
   };

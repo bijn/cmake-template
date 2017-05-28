@@ -9,14 +9,16 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace SouperFun {
-  class Core {
-   public:
+namespace SouperFun 
+{
+  class Core 
+  {
+  public:
     Core(std::string path);
 
     ~Core();
 
-   private:
+  private:
     std::string m_path;
 
   };

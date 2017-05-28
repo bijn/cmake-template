@@ -14,6 +14,9 @@ set(VERSION_PATCH 0)
 
 # Include
 include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/extlibs/include)
+
+link_directories("${PROJECT_SOURCE_DIR}/extlibs/libs/macos/lib/")
 
 # Interface with code
 configure_file(${PROJECT_SOURCE_DIR}/include/Config.h.in
