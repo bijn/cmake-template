@@ -16,22 +16,6 @@ set(VERSION_PATCH 0)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/extlibs/include)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
-set(SFML_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/extlibs/include)
-set(SFML_ROOT "${CMAKE_SOURCE_DIR}/extlibs/libs/msvc/x86/")
-file(COPY ${CMAKE_SOURCE_DIR}/extlibs/bin/msvc/x86/ DESTINATION ${CMAKE_BINARY_DIR}/bin/)
-
-find_package(SFML 2 REQUIRED system window graphics network audio)
-if(SFML_FOUND)
-  include_directories(${SFML_INCLUDE_DIR})
-endif()
-
-if(WIN32)
-  link_directories(${PROJECT_SOURCE_DIR}/extlibs/libs/msvc/x86/)
-elseif(APPLE)
-  link_directories(${PROJECT_SOURCE_DIR}/extlibs/libs/macos/lib/)
-endif()
-
 # Interface with code
 configure_file(${PROJECT_SOURCE_DIR}/include/Config.h.in
                ${PROJECT_BINARY_DIR}/include/Config.h)
