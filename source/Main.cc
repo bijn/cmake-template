@@ -23,12 +23,12 @@ int main(int argc, char *argv[]){
   }
   else
   {
-    path = path.substr (0, path.length () - EXECUTABLE.length());
+    path = path.substr (0, path.length () - SouperFun::EXE.length());
   }
 #endif 
 
   // Info ---------------------------------------------------------------------
-  printf ("%s ", EXECUTABLE.c_str ());
+  printf ("%s ", SouperFun::EXE.c_str ());
   printf ("(v%i.%i.%i)\n", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
 
   // Game ---------------------------------------------------------------------

@@ -12,12 +12,12 @@
 #define VERSION_MINOR @VERSION_MINOR@
 #define VERSION_PATCH @VERSION_PATCH@
 
-static const std::string EXECUTABLE = "@EXE@";
-
 namespace SouperFun {
+static const std::string EXE = "@EXE@";
+
 // Returns PWD given arg[0]
   static std::string GetPath(std::string path) {
-    std::string title = EXECUTABLE;
+    std::string title = EXE;
     return path.substr(0, path.length() - title.length());
   }
 }
