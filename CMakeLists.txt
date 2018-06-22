@@ -19,8 +19,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # CMake/code integration
 configure_file(
-  ${PROJECT_SOURCE_DIR}/include/Config.h.in
-  ${PROJECT_BINARY_DIR}/include/Config.h
+  ${PROJECT_SOURCE_DIR}/include/Config.hh.in
+  ${PROJECT_BINARY_DIR}/include/Config.hh
 )
 
 # Include
