@@ -1,17 +1,7 @@
 # Bijan Sondossi
-# FILE: .gitignore
-# DESCRIPTION: Files for Git to ignore.
+# .gitignore
 
-build/*
-
-# OSX
+build*
 .DS_Store
-
-# Google Drive
-Icon^m
-Icon?
-
-# Emacs
 *~
-
-# end .gitignore
+.vs

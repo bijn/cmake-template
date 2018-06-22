@@ -1,32 +1,36 @@
 # Bijan Sondossi
-# FILE: CMakeLists.txt
-# DESCRIPTION: Root CMake file.
+# CMakeLists.txt
 
-# Minimum CMake Version
-cmake_minimum_required(VERSION 3.5.2)
+# CMake settings -------------------------------------------------------
 
-# Define Project
-project(Template)
-set(EXE "Template")
-set(VERSION_MAJOR 0)
-set(VERSION_MINOR 0)
-set(VERSION_PATCH 0)
+cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+
+# Project --------------------------------------------------------------
+
+# Defaults
+project(Template VERSION 0.0.0)
+
+# CMake helpers
+include(${PROJECT_SOURCE_DIR}/modules/cmake-helpers/Helpers.cmake)
+
+# Compiler
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# CMake/code integration
+configure_file(
+  ${PROJECT_SOURCE_DIR}/include/Config.h.in
+  ${PROJECT_BINARY_DIR}/include/Config.h
+)
 
 # Include
-include_directories(${PROJECT_SOURCE_DIR}/include)
-include_directories(${PROJECT_SOURCE_DIR}/extlibs/include)
+include_directories(
+  ${PROJECT_SOURCE_DIR}/include
+  ${PROJECT_BINARY_DIR}/include # Needed for configured file
+)
 
-# Interface with code
-configure_file(${PROJECT_SOURCE_DIR}/include/Config.h.in
-               ${PROJECT_BINARY_DIR}/include/Config.h)
+# Tests ----------------------------------------------------------------
 
-# Needed for configured file
-include_directories(${PROJECT_BINARY_DIR}/include)
-
-# Add source to CMake path
-add_subdirectory(source)
-
-# Copy resources
-file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR}/bin/)
-
-# end CMakeLists.txt
+enable_testing()
+add_subdirectory(${PROJECT_SOURCE_DIR}/modules/gtest)
+add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
