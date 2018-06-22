@@ -1,11 +1,13 @@
 // Bijan Sondossi
-// Config.h
+// Config.hh
 
-#ifndef TEMPLATE_CONFIG_H
-#define TEMPLATE_CONFIG_H
+#ifndef TEMPLATE_CONFIG_HH
+#define TEMPLATE_CONFIG_HH
 
 #define VERSION_MAJOR @PROJECT_VERSION_MAJOR@
 #define VERSION_MINOR @PROJECT_VERSION_MINOR@
 #define VERSION_PATCH @PROJECT_VERSION_PATCH@
 
-#endif//TEMPLATE_CONFIG_H
+// Other stuff
+
+#endif//TEMPLATE_CONFIG_HH
