@@ -10,12 +10,22 @@ cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 # Defaults
 project(Template VERSION 0.0.0)
 
-# CMake helpers
-include(${PROJECT_SOURCE_DIR}/modules/cmake-helpers/Helpers.cmake)
-
 # Compiler
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# CMake helpers
+if(NOT COMMAND add_gtest)
+  include(${PROJECT_SOURCE_DIR}/modules/cmake-helpers/Helpers.cmake)
+endif()
+
+# Dependencies ---------------------------------------------------------
+
+if(NOT TARGET gtest)
+  add_subdirectory(${PROJECT_SOURCE_DIR}/modules/gtest)
+endif()
+
+# Source ---------------------------------------------------------------
 
 # CMake/code integration
 configure_file(
@@ -32,5 +42,4 @@ include_directories(
 # Tests ----------------------------------------------------------------
 
 enable_testing()
-add_subdirectory(${PROJECT_SOURCE_DIR}/modules/gtest)
 add_subdirectory(${PROJECT_SOURCE_DIR}/tests)

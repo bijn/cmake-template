@@ -8,7 +8,7 @@ then
     exit -1
 fi
 
-if mkdir -p $1/modules && cp -r template/* $1 && cd $1
+if mkdir -p $1/modules && cp -r template/ $1 && cd $1
 then
     git init
     git submodule add --name gtest \
