@@ -16,12 +16,12 @@ then
     git submodule add --name cmake-helpers \
         https://github.com/bijn/cmake-helpers modules/cmake-helpers
 
-    if [[ "$unamestr" == 'Linux' ]]
+    if [ "$(uname)" == 'Darwin' ]
     then
-        sed -i "s/Template/$1/g" CMakeLists.txt
-        sed -i "s/TEMPLATE/$1/g" include/Config.hh.in
-    else
         sed -i '' "s/Template/$1/g" CMakeLists.txt
         sed -i '' "s/TEMPLATE/$1/g" include/Config.hh.in
+    else
+        sed -i "s/Template/$1/g" CMakeLists.txt
+        sed -i "s/TEMPLATE/$1/g" include/Config.hh.in
     fi
 fi
