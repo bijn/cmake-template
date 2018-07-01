@@ -22,6 +22,10 @@ endif()
 # Dependencies ---------------------------------------------------------
 
 if(NOT TARGET gtest)
+  if(MSVC)
+    force_bool(gtest_force_shared_crt ON)
+  endif()
+
   add_subdirectory(${PROJECT_SOURCE_DIR}/modules/gtest)
 endif()
 

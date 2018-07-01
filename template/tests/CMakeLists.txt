@@ -5,7 +5,7 @@
 
 include_directories(${CMAKE_SOURCE_DIR}/tests/include)
 
-msvc_static_runtime()
+msvc_std_latest()
 
 if(NOT MSVC)
   # clang flags
