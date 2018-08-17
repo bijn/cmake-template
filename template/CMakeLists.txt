@@ -1,4 +1,4 @@
-# Bijan Sondossi
+# Template
 # CMakeLists.txt
 
 # CMake settings -------------------------------------------------------

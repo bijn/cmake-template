@@ -18,10 +18,22 @@ then
 
     if [ "$(uname)" == 'Darwin' ]
     then
-        sed -i '' "s/Template/$1/g" CMakeLists.txt
+        for file in * */*
+        do
+            if ! [ -d $file ]
+            then
+                sed -i '' "s/Template/$1/g" $file
+            fi
+        done
+
         sed -i '' "s/TEMPLATE/$1/g" include/Config.hh.in
     else
-        sed -i "s/Template/$1/g" CMakeLists.txt
-        sed -i "s/TEMPLATE/$1/g" include/Config.hh.in
+        for file in * */*
+        do
+            if ! [ -d $file ]
+            then
+                sed -i "s/template/$1/Ig" $file
+            fi
+        done
     fi
 fi
