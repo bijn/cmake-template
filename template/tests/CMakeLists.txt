@@ -7,13 +7,15 @@ include_directories(${CMAKE_SOURCE_DIR}/tests/include)
 
 msvc_std_latest()
 
-if(NOT MSVC)
+if(MSVC)
+  # Visual Studio flags
+  set(DEFAULT_TEST_FLAGS /W4 /WX)
+else()
   # clang flags
   set(
     DEFAULT_TEST_FLAGS
 
     # Included warnings
-    -g
     -Weverything
 
     # Excluded warnings
@@ -24,7 +26,7 @@ if(NOT MSVC)
 
   # g++ Flags
   if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-    set(DEFAULT_TEST_FLAGS -g -Wall -Wextra -pedantic)
+    set(DEFAULT_TEST_FLAGS -Wall -Wextra -pedantic)
   endif()
 endif()
 
