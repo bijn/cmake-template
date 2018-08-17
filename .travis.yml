@@ -6,7 +6,7 @@ os:
   - linux
 
 script:
-  - ./generate_project travis_test
+  - ./generate_project.sh travis_test
   - cd travis_test
   - mkdir build
   - cd build
