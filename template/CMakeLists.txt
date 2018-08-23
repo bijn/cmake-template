@@ -19,9 +19,13 @@ if(NOT COMMAND add_gtest)
   include(${PROJECT_SOURCE_DIR}/modules/cmake-helpers/Helpers.cmake)
 endif()
 
+# Options --------------------------------------------------------------
+
+option(WITH_Template_TESTS "Build Template tests." OFF)
+
 # Dependencies ---------------------------------------------------------
 
-if(NOT TARGET gtest)
+if(WITH_Template_TESTS AND NOT TARGET gtest)
   if(MSVC)
     force_bool(gtest_force_shared_crt ON)
   endif()
