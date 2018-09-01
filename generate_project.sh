@@ -12,12 +12,6 @@ if mkdir -p $1/modules && cp -r template/* $1 && cd $1
 then
     mv include/Template include/$1
 
-    git init
-    git submodule add --name gtest \
-        https://github.com/google/googletest modules/gtest
-    git submodule add --name cmake-helpers \
-        https://github.com/bijn/cmake-helpers modules/cmake-helpers
-
     for file in * */* */*/*
     do
         if ! [ -d $file ]
@@ -31,4 +25,14 @@ then
             fi
         fi
     done
+
+    git init
+
+    git submodule add --name gtest \
+        https://github.com/google/googletest modules/gtest
+
+    git submodule add --name cmake-helpers \
+        https://github.com/bijn/cmake-helpers modules/cmake-helpers
+
+    git add .
 fi
