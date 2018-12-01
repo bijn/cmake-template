@@ -21,9 +21,14 @@ endif()
 
 # Options --------------------------------------------------------------
 
+option(WITH_CLANG_TIDY "Use clang tidy." ON)
 option(WITH_Template_TESTS "Build Template tests." OFF)
 
 # Dependencies ---------------------------------------------------------
+
+if(WITH_CLANG_TIDY)
+  set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*;-warnings-as-errors=*")
+endif()
 
 if(WITH_Template_TESTS AND NOT TARGET gtest)
   if(MSVC)
