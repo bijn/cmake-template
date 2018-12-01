@@ -14,8 +14,9 @@ if(!(Test-Path -Path $project_name))
     mkdir $project_name/modules
     Copy-Item template/* -Destination $project_name -Recurse
     cd $project_name
+    Rename-Item -Path include/Template -NewName $project_name
 
-    Get-ChildItem -Recurse "." -include *.* | Foreach-Object {
+    Get-ChildItem -Recurse "." -Include *.* | Foreach-Object {
         $file = $_.FullName
         (Get-Content $file).replace('Template', $project_name) | Set-Content $file
         (Get-Content $file).replace('TEMPLATE', $project_name) | Set-Content $file
