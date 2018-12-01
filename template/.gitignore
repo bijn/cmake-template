@@ -1,7 +1,0 @@
-# Bijan Sondossi
-# .gitignore
-
-build*
-.DS_Store
-*~
-.vs
