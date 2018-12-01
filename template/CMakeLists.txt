@@ -19,9 +19,13 @@ if(NOT COMMAND add_gtest)
   include(${PROJECT_SOURCE_DIR}/modules/cmake-helpers/Helpers.cmake)
 endif()
 
+# Options --------------------------------------------------------------
+
+option(WITH_Template_TESTS "Build Template tests." OFF)
+
 # Dependencies ---------------------------------------------------------
 
-if(NOT TARGET gtest)
+if(WITH_Template_TESTS AND NOT TARGET gtest)
   if(MSVC)
     force_bool(gtest_force_shared_crt ON)
   endif()
@@ -33,8 +37,8 @@ endif()
 
 # CMake/code integration
 configure_file(
-  ${PROJECT_SOURCE_DIR}/include/Config.hh.in
-  ${PROJECT_BINARY_DIR}/include/Config.hh
+  ${PROJECT_SOURCE_DIR}/include/Template/Config.hh.in
+  ${PROJECT_BINARY_DIR}/include/Template/Config.hh
 )
 
 # Include
@@ -45,5 +49,7 @@ include_directories(
 
 # Tests ----------------------------------------------------------------
 
-enable_testing()
-add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+if(WITH_Template_TESTS)
+  enable_testing()
+  add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+endif()
