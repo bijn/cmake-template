@@ -21,8 +21,7 @@ else()
     # Excluded warnings
     -Wno-c++98-compat
     -Wno-c++98-compat-pedantic
-    -Wno-padded
-  )
+    -Wno-padded)
 
   # g++ Flags
   if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
