@@ -21,8 +21,11 @@ endif()
 
 # Options --------------------------------------------------------------
 
-option(WITH_CLANG_TIDY "Use clang tidy." ON)
-option(WITH_Template_TESTS "Build Template tests." OFF)
+option(WITH_CLANG_TIDY "Use clang tidy." on)
+set(
+  WITH_Template_TESTS "on"
+  CACHE STRING
+  "Build Template tests (when BUILD_TESTING is also defined).")
 
 # Dependencies ---------------------------------------------------------
 
@@ -30,31 +33,31 @@ if(WITH_CLANG_TIDY)
   set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*;-warnings-as-errors=*")
 endif()
 
-if(WITH_Template_TESTS AND NOT TARGET gtest)
-  if(MSVC)
-    force_bool(gtest_force_shared_crt ON)
-  endif()
-
-  add_subdirectory(${PROJECT_SOURCE_DIR}/modules/gtest)
-endif()
-
 # Source ---------------------------------------------------------------
 
 # CMake/code integration
 configure_file(
   ${PROJECT_SOURCE_DIR}/include/Template/Config.hh.in
-  ${PROJECT_BINARY_DIR}/include/Template/Config.hh
-)
+  ${PROJECT_BINARY_DIR}/include/Template/Config.hh)
 
 # Include
 include_directories(
   ${PROJECT_SOURCE_DIR}/include
-  ${PROJECT_BINARY_DIR}/include # Needed for configured file
-)
+  ${PROJECT_BINARY_DIR}/include) # Needed for configured file
 
 # Tests ----------------------------------------------------------------
 
-if(WITH_Template_TESTS)
+if(
+  (BUILD_TESTING AND WITH_Template_TESTS) OR
+  (WITH_Template_TESTS MATCHES "[Ff][Oo][Rr][Cc][Ee]"))
+
+  if(NOT TARGET gtest)
+    if(MSVC)
+      force_bool(gtest_force_shared_crt ON)
+    endif()
+    add_subdirectory(${PROJECT_SOURCE_DIR}/modules/gtest)
+  endif()
+
   enable_testing()
   add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
 endif()

@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!.travis.yml
+!README.md
+!generate_project.*
+!template
+!template/**
