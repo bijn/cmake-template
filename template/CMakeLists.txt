@@ -30,7 +30,7 @@ set(
 # Dependencies ---------------------------------------------------------
 
 if(WITH_CLANG_TIDY)
-  set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*;-warnings-as-errors=*")
+  set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-header-filter=.*")
 endif()
 
 # Source ---------------------------------------------------------------
@@ -56,6 +56,10 @@ if(
       force_bool(gtest_force_shared_crt ON)
     endif()
     add_subdirectory(${PROJECT_SOURCE_DIR}/modules/gtest)
+    set_target_properties(gtest PROPERTIES CXX_CLANG_TIDY "")
+    set_target_properties(gtest_main PROPERTIES CXX_CLANG_TIDY "")
+    set_target_properties(gmock PROPERTIES CXX_CLANG_TIDY "")
+    set_target_properties(gmock_main PROPERTIES CXX_CLANG_TIDY "")
   endif()
 
   enable_testing()
